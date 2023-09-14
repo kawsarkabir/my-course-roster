@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { FaDollarSign } from "react-icons/fa";
+import { FaDollarSign,FaBookOpen } from "react-icons/fa";
+ 
 
 const Course = ({ course, handleButtonClick }) => {
   const { course_name, details, price, credit, img } = course;
@@ -16,10 +17,10 @@ const Course = ({ course, handleButtonClick }) => {
           <p className="text-gray-500">{details}</p>
           <div className="card-actions justify-between my-2">
             <span className="flex items-center text-gray-500 text-lg">
-              <FaDollarSign /> Price : {price}
+              <FaDollarSign className="mr-2" /> Price : {price}
             </span>
             <span className="flex items-center text-gray-500 text-lg">
-              <FaDollarSign /> Credit : {credit}hr
+              <FaBookOpen className="mr-2" /> Credit : {credit}hr
             </span>
           </div>
           <button
