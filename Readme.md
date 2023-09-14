@@ -1,12 +1,12 @@
 # Course-Registration
 
-## Here is a most interesting features in this project
+### Here is a most interesting features in this project
 
 - If you click on the select button,you will know how many credits in this course
 - You can select any course name only once
 - An alert will show when your course credits cannot go beyond 20
 
-## Now, i discuss how i managed the state in my assignment project.
+### Now, I discuss how to managed the state in my assignment project.
 
 - Course Selection State:
 I am  using the courseName state variable to store an array of selected courses. This array holds the courses that the user has chosen to add.
