@@ -1,4 +1,5 @@
 import { ToastContainer, toast } from "react-toastify";
+import swal from "sweetalert";
 import "react-toastify/dist/ReactToastify.css";
 import React, { useState } from "react";
 import "./App.css";
@@ -15,15 +16,14 @@ const App = () => {
   const handleButtonClick = (course) => {
     const isExit = courseName.find((courseItem) => courseItem.id === course.id);
     if (isExit) {
-      return toast("Already Selected");
+      return swal("Oops!", " You have already selected this course!");
     } else {
       const newCourseName = [...courseName, course];
       setCourseName(newCourseName);
 
       const newReadingTime = readingTime + course.credit;
-
       if (newReadingTime > 20) {
-        return toast.warn('🦄 20 ar beshi jabe na!', {
+        return toast.info("🦄 Your credit hours cannot exceed 20!", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -31,11 +31,10 @@ const App = () => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "light",
-          });
+          theme: "dark",
+        });
       } else {
         setReadingTime(newReadingTime);
-
         let newRemainTime = 20 - newReadingTime;
         setRemainTime(newRemainTime);
       }
@@ -48,7 +47,7 @@ const App = () => {
   return (
     <div>
       <Header />
-      <div className="flex justify-between px-6 mt-8 md:flex-col gap-4 lg:flex-row flex-col container mx-auto items-center lg:items-start">
+      <div className="flex justify-between px-6 my-8 md:flex-col gap-4 lg:flex-row flex-col container mx-auto items-center lg:items-start">
         <Courses handleButtonClick={handleButtonClick} />
         <CourseAside
           courseName={courseName}
