@@ -1,21 +1,8 @@
 import React from "react";
 import { FaDollarSign } from "react-icons/fa";
 
-const Course = ({
-  course,
-  handleNameChange,
-  handleMarkAsRead,
-  handleTotalPrice,
-  handleRemainTime,
-}) => {
+const Course = ({ course, handleButtonClick }) => {
   const { course_name, details, price, credit, img } = course;
-
-  const handleButtonClick = () => {
-    handleNameChange(course);
-    handleMarkAsRead(credit);
-    handleTotalPrice(price);
-    handleRemainTime();
-  };
 
   return (
     <div>
@@ -35,7 +22,7 @@ const Course = ({
             </span>
           </div>
           <button
-            onClick={handleButtonClick}
+            onClick={() => handleButtonClick(course)}
             className="w-full uppercase btn-primary btn"
           >
             Select

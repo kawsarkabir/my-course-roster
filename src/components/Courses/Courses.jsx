@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Course from "../Course/Course";
 
-const Courses = ({ handleNameChange, handleMarkAsRead,handleTotalPrice, handleRemainTime }) => {
+const Courses = ({ handleButtonClick }) => {
   const [courses, setCourses] = useState([]);
   useEffect(() => {
     fetch("courses.json")
@@ -11,12 +11,7 @@ const Courses = ({ handleNameChange, handleMarkAsRead,handleTotalPrice, handleRe
   return (
     <div className="lg:w-10/12 md:w-full grid lg:grid-cols-3 md:grid-cols-2 gap-5 grid-cols-1">
       {courses.map((course) => (
-        <Course 
-        course={course} 
-        handleNameChange={handleNameChange}
-        handleMarkAsRead={handleMarkAsRead}
-        handleTotalPrice={handleTotalPrice}
-        handleRemainTime={handleRemainTime} />
+        <Course course={course} handleButtonClick={handleButtonClick} />
       ))}
     </div>
   );

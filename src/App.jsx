@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React, { useState } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
@@ -10,35 +12,44 @@ const App = () => {
   const [readingTime, setReadingTime] = useState(0);
   const [prevPrice, setPrice] = useState(0);
 
-  const handleNameChange = (course) => {
-    const newCourseName = [...courseName, course];
-    setCourseName(newCourseName);
-  };
+  const handleButtonClick = (course) => {
+    const isExit = courseName.find((courseItem) => courseItem.id === course.id);
+    if (isExit) {
+      return toast("Already Selected");
+    } else {
+      const newCourseName = [...courseName, course];
+      setCourseName(newCourseName);
 
-  const handleMarkAsRead = (time) => {
-    const newReadingTime = readingTime + time;
-    setReadingTime(newReadingTime);
-  };
-  const handleRemainTime = () => {
-    const newRemainTime = 20 - readingTime;
-    setRemainTime(newRemainTime);
-    // console.log(time-20-);
-  };
-  const handleTotalPrice = (price) => {
-    const newPrice = prevPrice + price;
-    setPrice(newPrice);
+      const newReadingTime = readingTime + course.credit;
+
+      if (newReadingTime > 20) {
+        return toast.warn('🦄 20 ar beshi jabe na!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+      } else {
+        setReadingTime(newReadingTime);
+
+        let newRemainTime = 20 - newReadingTime;
+        setRemainTime(newRemainTime);
+      }
+
+      const newPrice = prevPrice + course.price;
+      setPrice(newPrice);
+    }
   };
 
   return (
     <div>
       <Header />
       <div className="flex justify-between px-6 mt-8 md:flex-col gap-4 lg:flex-row flex-col container mx-auto items-center lg:items-start">
-        <Courses
-          handleNameChange={handleNameChange}
-          handleMarkAsRead={handleMarkAsRead}
-          handleTotalPrice={handleTotalPrice}
-          handleRemainTime={handleRemainTime}
-        />
+        <Courses handleButtonClick={handleButtonClick} />
         <CourseAside
           courseName={courseName}
           readingTime={readingTime}
@@ -46,6 +57,7 @@ const App = () => {
           remainTime={remainTime}
         />
       </div>
+      <ToastContainer />
     </div>
   );
 };
