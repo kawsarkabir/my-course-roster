@@ -1,15 +1,22 @@
 import React from "react";
 import { FaDollarSign } from "react-icons/fa";
 
-const Course = ({ course, handleNameChange,handleMarkAsRead,handleTotalPrice }) => {
+const Course = ({
+  course,
+  handleNameChange,
+  handleMarkAsRead,
+  handleTotalPrice,
+  handleRemainTime,
+}) => {
   const { course_name, details, price, credit, img } = course;
 
   const handleButtonClick = () => {
     handleNameChange(course);
     handleMarkAsRead(credit);
-    handleTotalPrice(price)
+    handleTotalPrice(price);
+    handleRemainTime();
   };
- 
+
   return (
     <div>
       <div className="card w-80 h-full shadow-md">

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Course from "../Course/Course";
 
-const Courses = ({ handleNameChange, handleMarkAsRead,handleTotalPrice }) => {
+const Courses = ({ handleNameChange, handleMarkAsRead,handleTotalPrice, handleRemainTime }) => {
   const [courses, setCourses] = useState([]);
   useEffect(() => {
     fetch("courses.json")
@@ -15,7 +15,8 @@ const Courses = ({ handleNameChange, handleMarkAsRead,handleTotalPrice }) => {
         course={course} 
         handleNameChange={handleNameChange}
         handleMarkAsRead={handleMarkAsRead}
-        handleTotalPrice={handleTotalPrice} />
+        handleTotalPrice={handleTotalPrice}
+        handleRemainTime={handleRemainTime} />
       ))}
     </div>
   );
