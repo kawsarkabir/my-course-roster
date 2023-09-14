@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import { FaDollarSign } from "react-icons/fa";
 
@@ -12,12 +13,12 @@ const Course = ({ course, handleButtonClick }) => {
         </figure>
         <div className="card-body">
           <h2 className="card-title">{course_name}</h2>
-          <p>{details}</p>
+          <p className="text-gray-500">{details}</p>
           <div className="card-actions justify-between my-2">
-            <span className="flex items-center">
+            <span className="flex items-center text-gray-500 text-lg">
               <FaDollarSign /> Price : {price}
             </span>
-            <span className="flex items-center">
+            <span className="flex items-center text-gray-500 text-lg">
               <FaDollarSign /> Credit : {credit}hr
             </span>
           </div>
@@ -32,5 +33,8 @@ const Course = ({ course, handleButtonClick }) => {
     </div>
   );
 };
-
+Course.propTypes = {
+  course: PropTypes.object.isRequired,
+  handleButtonClick: PropTypes.func.isRequired,
+};
 export default Course;
