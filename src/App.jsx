@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div>
        <Header/>
-       <div  className="flex justify-between px-10 mt-8 md:flex-row gap-4 lg:flex-row flex-col container mx-auto">
+       <div  className="flex justify-between px-6 mt-8 md:flex-col gap-4 lg:flex-row flex-col container mx-auto items-center lg:items-start">
         <Courses/>
         <CourseAside/>
        </div>
