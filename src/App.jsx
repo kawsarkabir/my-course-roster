@@ -9,7 +9,7 @@ import CourseAside from "./components/CourseAside/CourseAside";
 
 const App = () => {
   const [courseName, setCourseName] = useState([]);
-  const [remainTime, setRemainTime] = useState(0);
+  const [remainTime, setRemainTime] = useState(20);
   const [readingTime, setReadingTime] = useState(0);
   const [prevPrice, setPrice] = useState(0);
 
